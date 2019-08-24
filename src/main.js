@@ -5,6 +5,10 @@ import router from '@/router'
 // 引入elementui插件
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 引入axios
+import axios from 'axios'
+// 简单配置axios
+Vue.prototype.$http = axios
 
 // Vue.config.productionTip = false
 // 注册插件
