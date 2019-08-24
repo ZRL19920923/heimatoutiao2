@@ -81,8 +81,9 @@ export default {
     login () {
       // 登录时对表单数据进行校验 利用element组件自带的validate方法
       // 所以要找到相对应的组件实例 利用$refs方法找到element组件的实例 调用validate
+      // console.log(this.$refs)
 
-      this.$refs.loginform.validate((valid) => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
             .then((res) => {
