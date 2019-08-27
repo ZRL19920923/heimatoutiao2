@@ -23,7 +23,9 @@
 </template>
 
 <script>
+import Store from '@/store'
 export default {
+
   props: {
 
   },
@@ -46,8 +48,8 @@ export default {
     }
     return {
       loginForm: {
-        mobile: '',
-        code: ''
+        mobile: '15079804860',
+        code: '246810'
       },
       // 表单校验
       loginRules: {
@@ -88,6 +90,9 @@ export default {
           this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
             .then((res) => {
               // 成功跳转 没有配置路由 前往router中配置该路由
+              // 登录限制  设置本地token 以后没有携带token的跳转都强制到登录页面
+              // 有token 放行  没有登录 所以要用到路由进阶 守卫导航
+              Store.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {

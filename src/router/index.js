@@ -1,6 +1,8 @@
 import Vue from 'vue'
 // 引入vue-router
 import VueRouter from 'vue-router'
+// 引入store模块
+import Store from '@/store'
 // 引入一级组件
 import Login from '@/views/login'
 import Home from '@/views/home'
@@ -23,4 +25,11 @@ const router = new VueRouter({
   ]
 })
 // 导出路由
+// 创立路由守卫
+router.beforeEach((to, from, next) => {
+  if (!Store.getUser().token && to.path !== '/lg') {
+    next('/lg')
+  }
+  next()
+})
 export default router

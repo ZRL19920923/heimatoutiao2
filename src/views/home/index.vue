@@ -3,15 +3,14 @@
     <el-aside :width="isCollapse?'64px':'200px'">
       <div class="logo" :class="{minilogo:isCollapse}"></div>
       <el-menu
-        default-active="2"
+        default-active="$route.path"
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
         background-color="#002033"
         text-color="#fff"
         active-text-color="#ffd04b"
         :collapse="isCollapse"
         :collapse-transition="false"
+        router
       >
         <el-menu-item index="/">
           <i class="el-icon-menu"></i>
@@ -47,15 +46,15 @@
       <el-header>
         <span @click="roll()" class="el-icon-s-fold"></span>
         <span class="text">江苏传智管理有限公司</span>
-        <el-dropdown class="dropmenu">
+        <el-dropdown class="dropmenu" @command='checkItem'>
           <span class="el-dropdown-link">
-            <img src="../../assets/images/avatar.jpg" alt="">
-            <span class="name">张仁亮</span>
+            <img :src="photo" alt="">
+            <span class="name">{{name}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-s-tools">个人中心</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-circle-close">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-s-tools" command="setting">个人中心</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-close" command="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </el-header>
@@ -67,20 +66,35 @@
 </template>
 
 <script>
+import Store from '@/store'
 export default {
   props: {},
   data () {
     return {
-      isCollapse: false
+      isCollapse: false,
+      name: '',
+      photo: ''
     }
   },
   computed: {},
-  created () {},
+  created () {
+    this.name = Store.getUser().name
+    this.photo = Store.getUser().photo
+  },
   mounted () {},
   watch: {},
   methods: {
     roll () {
       this.isCollapse = !this.isCollapse
+    },
+    checkItem (command) {
+      this[command]()
+    },
+    setting () {
+      this.$router.push('/setting')
+    },
+    logout () {
+      this.$router.push('/lg')
     }
   },
   components: {}
