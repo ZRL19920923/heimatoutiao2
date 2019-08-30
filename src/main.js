@@ -5,6 +5,7 @@ import router from '@/router'
 // 引入elementui插件
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import myPlugin from '@/components'
 // 引入axios
 import axios from '@/api'
 // 简单配置axios
@@ -13,6 +14,7 @@ Vue.prototype.$http = axios
 // Vue.config.productionTip = false
 // 注册插件
 Vue.use(ElementUI)
+Vue.use(myPlugin)
 
 new Vue({
   // 挂载路由

@@ -2,6 +2,19 @@
 import axios from 'axios'
 import Store from '@/store'
 import router from '@/router'
+import JSON_BIGINT from 'json-bigint'
+
+// 自定义处理响应数据的方法
+axios.defaults.transformResposne = [function (data) {
+  // 对 data 进行任意转换处理
+  // 因为有的请求并没有响应数据 对null进行转换会报错 所以这里有try控制
+  // 数字最大安全知识 js中数字最大安全值是2的53次方 一旦达到这个界限那么数据便会失准 所以利用新模块json-bigint处理
+  try {
+    JSON_BIGINT.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 // axios.defaults.headers.AUthorization = `Bearer ${Store.getUser().token}`

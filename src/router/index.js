@@ -9,6 +9,7 @@ import Home from '@/views/home'
 // 引进二级组件
 import Welcome from '@/views/welcome'
 import Notfound from '@/views/404'
+import Article from '@/views/article'
 // 注册路由
 Vue.use(VueRouter)
 // 实例化路由
@@ -16,10 +17,11 @@ const router = new VueRouter({
   routes: [
     { path: '/lg', name: 'login', component: Login },
     { path: '/',
-      name: 'home',
+      // name: 'home',
       component: Home,
       children: [
-        { path: '/wc', name: 'welcome', component: Welcome }
+        { path: '/', name: 'welcome', component: Welcome },
+        { path: '/article', name: 'article', component: Article }
       ] },
     { path: '*', component: Notfound }
   ]

@@ -16,13 +16,13 @@
           <i class="el-icon-menu"></i>
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/image">
-          <i class="el-icon-menu"></i>
-          <span slot="title">素材管理</span>
-        </el-menu-item>
         <el-menu-item index="/article">
           <i class="el-icon-menu"></i>
           <span slot="title">内容管理</span>
+        </el-menu-item>
+        <el-menu-item index="/image">
+          <i class="el-icon-menu"></i>
+          <span slot="title">素材管理</span>
         </el-menu-item>
         <el-menu-item index="/publish">
           <i class="el-icon-menu"></i>
@@ -43,12 +43,12 @@
       </el-menu>
     </el-aside>
     <el-container>
-      <el-header>
+      <el-header class="myhead">
         <span @click="roll()" class="el-icon-s-fold"></span>
         <span class="text">江苏传智管理有限公司</span>
-        <el-dropdown class="dropmenu" @command='checkItem'>
+        <el-dropdown class="dropmenu" @command="checkItem">
           <span class="el-dropdown-link">
-            <img :src="photo" alt="">
+            <img :src="photo" alt />
             <span class="name">{{name}}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -127,6 +127,8 @@ export default {
   }
   .el-header {
     line-height: 60px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 15px;
     .el-icon-s-fold {
       font-size: 20px;
       vertical-align: middle;
@@ -134,14 +136,15 @@ export default {
     .text {
       vertical-align: middle;
     }
-    .dropmenu{
+    .dropmenu {
       float: right;
+
       img {
         height: 30px;
         width: 30px;
         vertical-align: middle;
       }
-      .name{
+      .name {
         vertical-align: middle;
         font-weight: bold;
       }
