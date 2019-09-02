@@ -55,7 +55,7 @@
         <el-table-column prop="title" label="标题"></el-table-column>
         <el-table-column prop="status" label="状态">
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.status ===2">审核成功</el-tag>
+            <el-tag type="success" v-if="scope.row.status ===2">审核成功</el-tag>
             <el-tag v-if="scope.row.status ===1">审核失败</el-tag>
             <el-tag v-if="scope.row.status ===0">草稿</el-tag>
             <el-tag v-if="scope.row.status ===3">待审核</el-tag>

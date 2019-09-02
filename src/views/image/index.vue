@@ -81,7 +81,7 @@ export default {
       // 赋值
       this.imageUrl = res.data.url
       // 两秒关闭
-      window.setInterval(() => {
+      window.setTimeout(() => {
         this.dialogVisible = false
         this.reqParams.page = 1
         this.getImages()
