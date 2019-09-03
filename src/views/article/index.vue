@@ -41,7 +41,7 @@
     <el-card>
       <div slot="header">根据筛选条件共查询到{{total}}条结果</div>
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="cover" label="封面">
+        <el-table-column prop="date" label="封面">
           <template slot-scope="scope">
             <div>
               <el-image :src="scope.row.cover.images[0]" style="width:120px;height:120px;">

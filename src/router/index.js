@@ -11,6 +11,7 @@ import Welcome from '@/views/welcome'
 import Notfound from '@/views/404'
 import Article from '@/views/article'
 import Image from '@/views/image'
+import Publish from '@/views/publish'
 // 注册路由
 Vue.use(VueRouter)
 // 实例化路由
@@ -23,7 +24,8 @@ const router = new VueRouter({
       children: [
         { path: '/', name: 'welcome', component: Welcome },
         { path: '/article', name: 'article', component: Article },
-        { path: '/image', name: 'image', component: Image }
+        { path: '/image', name: 'image', component: Image },
+        { path: '/publish', name: 'publish', component: Publish }
       ] },
     { path: '*', component: Notfound }
   ]
